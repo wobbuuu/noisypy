@@ -28,7 +28,6 @@ plt.rcParams['figure.max_open_warning'] = 100
 plt.rcParams['figure.constrained_layout.use'] = True
 plt.rcParams['figure.figsize'] = [4, 3]
 plt.rcParams['figure.facecolor'] = 'white'
-plt.rcParams['figure.dpi'] = 300
 plt.rcParams['axes.axisbelow'] = True
 plt.rcParams['axes.facecolor'] = 'white'
 plt.rcParams['axes.grid'] = False
