@@ -14,8 +14,8 @@ __all__ = ['calibrate', 'fit_calibration']
 
 
 def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  det_ind=2,\
-              shift=1, r_set=varz.r_set, preamp=varz.preamp, r_wires=215/2, r0=varz.r0,\
-              vmax=1e-3, sg_rpar=None, sg_det=None, sg_power=(9, 1), cs_smooth=None):
+              shift=1, r_set=varz.r_set, preamp=varz.preamp, r_wires=215/2, coef=varz.coef,\
+              r0=varz.r0, vmax=1e-3, sg_rpar=None, sg_det=None, sg_power=(9, 1), cs_smooth=None):
     """
     ADD AUTOEXCLUSION OF BAD CURVES
     Provides calibration data and calibration function
@@ -39,7 +39,7 @@ def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  
             v = pd.Series(v).shift(-shift)
             # Subtract preamp offset
             v -= v[np.abs(vb).argmin()] 
-            i = (vb - v) / r_set[j]
+            i = (vb*coef - v) / r_set[j]
             inds = np.abs(v) < vmax
             r = np.nan
             if len(i[inds]) > 3:
