@@ -56,9 +56,10 @@ def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  
         det = pd.concat([det, df[det_ind]], axis=1, ignore_index=True)
     
     # Always start measurement from smallest resistance (largest detector signal)
-    if det.index[0] < det.index[-1]:
-        det = det[::-1]
-        
+#     if det.index[0] < det.index[-1]:
+#         det = det[::-1]
+    # This is sometimes wrong
+  
     vtg = det.index
     det = det.mean(axis=1)
     
