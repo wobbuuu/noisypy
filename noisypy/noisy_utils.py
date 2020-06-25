@@ -233,17 +233,17 @@ def plot_aux(noise, fanos, rdifs, calib, dep='v', calib_range=0.5, plot=None,\
                 label_now = labels[k]
             else:
                 label_now = '{:.2g}'.format(labels[k])
-            line = ax[0].plot(noise[k][dep[0]]*ax_coef[0], noise[k]['rdif_clean'], 'x',\
+            line = ax[0].plot(noise[k][dep[0]]*ax_coef[0], noise[k]['rdif_clean'], '.',\
                               alpha=0.6, ms=3, label=label_now)
             ax[0].plot(noise[k][dep[0]]*ax_coef[0], noise[k]['rdif'],\
                        color=line[0].get_color(), linewidth=1.5, label='_nolegend_')
             
-            line = ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['noise'], 'x',\
+            line = ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['noise'], '.',\
                               alpha=0.6, ms=3, label='{:.2g}'.format(fanos[k]))
             ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['fitted'],\
                        color=line[0].get_color(), linewidth=1.5, label='_nolegend_')
             
-            line = ax[2].plot(noise[k]['rpar'], noise[k]['power'], 'x',\
+            line = ax[2].plot(noise[k]['rpar'], noise[k]['power'], '.',\
                               alpha=0.6, ms=3, label=label_now)
             if type(calib_range) == list:
                 rpar = np.linspace(calib_range[0], calib_range[1], 201)
