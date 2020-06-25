@@ -50,7 +50,7 @@ class Global_varz():
     Global variables container
     """
     def __init__(self, r0=20e3, A2T=0.05137, preamp=106.1, r_set=2e6, r_conv=1e7,\
-                 coef=0.22/(0.22+0.68), coef2=0.22*0.68/(0.22+0.68)**2,\
+                 coef=0.22/(0.22+0.68), coef2=0.22*0.68/(0.68**2+2*0.22*0.68),\
                  figsize12=(5.8, 2.7), figsize13=(7, 2.5), figsize22=(5.8, 4.5),\
                  figsize23=(5.8, 3.2)):
         """
