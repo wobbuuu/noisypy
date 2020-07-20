@@ -498,7 +498,7 @@ def get_noise(indexes, calib, G, name='./data/cond', iters=20, skip_indexes=[],\
             else:
                 data['v'] = pd.Series(savgol_filter(data['v'], *savgol_v))
         
-	if savgol_det:
+        if savgol_det:
             if type(savgol_det) == dict:
                 data['det'] = pd.Series(savgol_filter(data['det'], **savgol_det))
             else:
