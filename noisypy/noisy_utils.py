@@ -428,14 +428,14 @@ def get_noise(indexes, calib, G, name='./data/cond', iters=20, skip_indexes=[],\
             current, voltage = get_r(df, **rkwargs)
             if i+j in skip_indexes:
                 continue
-	    if both and j%2 == 1:
-	        cur = pd.concat([cur, current[::-1]], axis=1, ignore_index=True)
-	        v = pd.concat([v, voltage[::-1]], axis=1, ignore_index=True)
-	        det = pd.concat([det, df[det_ind][::-1]], axis=1, ignore_index=True)   
-	    else:
-	        cur = pd.concat([cur, current], axis=1, ignore_index=True)
-	        v = pd.concat([v, voltage], axis=1, ignore_index=True)
-	        det = pd.concat([det, df[det_ind]], axis=1, ignore_index=True)   
+            if both and j%2 == 1:
+                cur = pd.concat([cur, current[::-1]], axis=1, ignore_index=True)
+                v = pd.concat([v, voltage[::-1]], axis=1, ignore_index=True)
+                det = pd.concat([det, df[det_ind][::-1]], axis=1, ignore_index=True)   
+            else:
+                cur = pd.concat([cur, current], axis=1, ignore_index=True)
+                v = pd.concat([v, voltage], axis=1, ignore_index=True)
+                det = pd.concat([det, df[det_ind]], axis=1, ignore_index=True)   
         last_df = df
         
         good_inds = (v.abs() < threshold['v']) & (cur.abs() < threshold['i']) &\
