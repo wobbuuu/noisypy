@@ -357,7 +357,8 @@ def get_noise(indexes, calib, G, name='./data/cond', iters=20, skip_indexes=[],\
               reg_grid=None, max_deviation={'v':15e-6, 'i':4e-10, 'det':2.5e-3},\
               savgolize={'v':{'window_length':3,'polyorder':1,},}, savgol_v=[], savgol_i=[],\
               savgol_r=[3, 1], rpar=varz.r0/2, skip_points=(0, 0), T=4.2, fitrange=None,\
-              aux_rdif=None, rkwargs={}, verbose=True, fit_offset=False, both=False):
+              aux_rdif=None, rkwargs={}, verbose=True, fit_offset=False, both=False,\
+	      savgol_det=[3, 1]):
     """
     savgolize only dict of dicts
     
@@ -497,6 +498,12 @@ def get_noise(indexes, calib, G, name='./data/cond', iters=20, skip_indexes=[],\
             else:
                 data['v'] = pd.Series(savgol_filter(data['v'], *savgol_v))
         
+	if savgol_det:
+            if type(savgol_det) == dict:
+                data['det'] = pd.Series(savgol_filter(data['det'], **savgol_det))
+            else:
+                data['det'] = pd.Series(savgol_filter(data['det'], *savgol_det))
+		
         # Creating DataFrame and applying savgol_filter on rdif if necessary
         noise.append(pd.DataFrame({'v':data['v'].values, 'i':data['i'].values,\
                                    'rdif_clean':data['rdif_clean'].values,\
