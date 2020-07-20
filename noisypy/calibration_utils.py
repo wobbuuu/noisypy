@@ -117,7 +117,7 @@ def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  
     
     # savgol_filter on power vs rpar or csaps smoothingspline
     calib_tg.sort_values(by='rpar', inplace=True)
-    rpar_reg = np.linspace(calib_tg['rpar'].min(), calib_tg['rpar'].max()+500, 500)
+    rpar_reg = np.linspace(calib_tg['rpar'].min(), calib_tg['rpar'].max(), 500)
     if not cs_smooth:
         power = np.interp(rpar_reg, calib_tg['rpar'], calib_tg['power'])
         smoothed_power = savgol_filter(power, *sg_power)
