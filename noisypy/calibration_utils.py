@@ -80,11 +80,11 @@ def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  
         print("]")
         calib_tg.dropna(inplace=True)
         
-    # subtract offset
-    fit_inds = calib_tg['rpar'] < 300
-    if len(calib_tg.loc[fit_inds, 'rpar']) > 2:
-        _, P0 = np.polyfit(calib_tg.loc[fit_inds, 'rpar'], calib_tg.loc[fit_inds, 'power'], 1)
-        calib_tg['power'] -= P0
+#     # subtract offset
+#     fit_inds = calib_tg['rpar'] < 300
+#     if len(calib_tg.loc[fit_inds, 'rpar']) > 2:
+#         _, P0 = np.polyfit(calib_tg.loc[fit_inds, 'rpar'], calib_tg.loc[fit_inds, 'power'], 1)
+#         calib_tg['power'] -= P0
     
     fig, ax = plt.subplots(1, 3, figsize=varz.figsize13)
     ax[0].plot(calib_tg['vtg'], calib_tg['rpar'], '.')
