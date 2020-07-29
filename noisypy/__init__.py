@@ -13,7 +13,7 @@ plt.rcParams['backend'] = 'module://ipykernel.pylab.backend_inline'
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = ['DejaVu Sans']
 plt.rcParams['text.usetex'] = True
-plt.rcParams['text.latex.preview'] = True
+#plt.rcParams['text.latex.preview'] = True
 params = {'text.latex.preamble': [
     r'\renewcommand{\familydefault}{\sfdefault}',
     r'\usepackage[scaled=1]{helvet}',
