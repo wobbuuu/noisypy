@@ -523,9 +523,9 @@ def get_noise(indexes, calib, G, name='./data/cond', iters=20, skip_indexes=[],\
         # Dropping edge points
         noise[k] = noise[k].iloc[skip_points[0]:len(noise[k])-skip_points[1]]
         
-        # Power in point with smallest power (= no current)
+        # Power in point with smallest current (!= min power)
         # must be equal to thermal noise power
-        ind_min = noise[k]['power'].abs().idxmin()
+        ind_min = noise[k]['i'].abs().idxmin()
         noise[k]['power'] -= float(noise[k].loc[ind_min, 'power'] -\
                                    calib(noise[k].loc[ind_min, 'rpar']))
 
