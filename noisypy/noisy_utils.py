@@ -258,7 +258,8 @@ def plot_aux(noise, fanos, rdifs, calib, dep='v', calib_range=0.5, plot=None,\
     ax[2].ticklabel_format(axis='y', style='sci', scilimits=(0,0));
     if figname is not None:
         fig.savefig(figname, **kwargs)
-    
+    return fig, ax
+
     
 def plot_noise(noise, fanos, rdifs, calib, dep='v', calib_range=0.5, plot=None,\
                labels=None, legend=True, leg_title=None, fitted=False, figname=None, kwargs={}):
@@ -300,11 +301,11 @@ def plot_noise(noise, fanos, rdifs, calib, dep='v', calib_range=0.5, plot=None,\
                 
             noise[k].sort_values(by=dep[0], inplace=True)
             ax[0].plot(noise[k].loc[noise[k]['rdif']>0, dep[0]]*ax_coef[0],\
-                       noise[k].loc[noise[k]['rdif']>0, 'rdif'], '.',  ms=1.5,\
+                       noise[k].loc[noise[k]['rdif']>0, 'rdif'], '.',  ms=3,\
                        label=label_now)
             
             noise[k].sort_values(by=dep[1], inplace=True)
-            ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['noise'], '.', ms=1.5,\
+            ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['noise'], '.', ms=3,\
                        label='{:.2g}'.format(fanos[k]))
             
             if fitted:
