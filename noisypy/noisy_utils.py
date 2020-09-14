@@ -5,6 +5,7 @@ import scipy as sp
 from scipy.signal import savgol_filter
 from matplotlib import pyplot as plt
 from .settings import *
+from .plot_utils import *
 
 __all__ = ['four_probe', 'conv_preamp', 'spec_density', 'spec_fitting', 'det2power',\
            'plot_noise', 'plot_aux', 'plot_fanos', 'get_noise', 'four_probe_cur_offset',\
