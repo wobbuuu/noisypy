@@ -192,17 +192,17 @@ def conv_preamp(df, cur=3, volt=2, r_conv=varz.r_conv, preamp=varz.preamp,
     return i, v
 
 
-def converter(df, cur=2, volt=1, r_conv=varz.r_conv, div_c=0.01,
-                shift=1):
+def conv_two_probe(df, cur=2, volt=1, r_conv=varz.r_conv, div_c=0.01,
+		   r_series=0, shift=1):
     """
     Returns correctly calculated current and voltage from data obtained 
     via simultaneusly measurement of voltage (preamp) and current (i-v converter)
     """
     v = df[volt] * div_c
-    i = -df[cur] / r_conv
-    
+    i = (df[cur] - v) / r_conv
+    v -= i * r_series
+	
     # Typical ~1 point delay in fast DC measurements
-    v = pd.Series(v).shift(-shift)
     i = pd.Series(i).shift(-shift)
     
     # Remove preamp offset (supposed that 0 is in vb)
