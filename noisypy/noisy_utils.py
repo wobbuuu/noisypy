@@ -7,7 +7,8 @@ from matplotlib import pyplot as plt
 from .settings import *
 
 __all__ = ['four_probe', 'conv_preamp', 'spec_density', 'spec_fitting', 'det2power',\
-           'plot_noise', 'plot_aux', 'plot_fanos', 'get_noise', 'four_probe_cur_offset']
+           'plot_noise', 'plot_aux', 'plot_fanos', 'get_noise', 'four_probe_cur_offset',\
+	   'conv_two_probe']
 
 
 def det2power(v_det):
