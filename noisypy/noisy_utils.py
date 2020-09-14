@@ -195,12 +195,12 @@ def conv_preamp(df, cur=3, volt=2, r_conv=varz.r_conv, preamp=varz.preamp,
 
 
 def conv_two_probe(df, cur=2, volt=1, r_conv=varz.r_conv, div_c=0.01,
-		   r_series=0, shift=1):
+		   r_series=0, v_offset=0, shift=1):
     """
     Returns correctly calculated current and voltage from data obtained 
     via simultaneusly measurement of voltage (preamp) and current (i-v converter)
     """
-    v = df[volt] * div_c
+    v = (df[volt] - v_offset) * div_c
     i = (df[cur] - v) / r_conv
     v -= i * r_series
 	
