@@ -213,7 +213,7 @@ def conv_two_probe(df, cur=2, volt=1, r_conv=varz.r_conv, div_c=0.01,
 
 
 def plot_aux(noise, fanos, rdifs, calib, dep='v', calib_range=0.5, plot=None,\
-             labels=None, legend=True, figname=None, kwargs={}):
+             labels=None, legend=True, fitted=True, figname=None, kwargs={}):
 
     if not noise:
         return
@@ -260,8 +260,9 @@ def plot_aux(noise, fanos, rdifs, calib, dep='v', calib_range=0.5, plot=None,\
             
             line = ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['noise'], '.',\
                               alpha=0.6, ms=3, label='{:.2g}'.format(fanos[k]))
-            ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['fitted'],\
-                       color=line[0].get_color(), linewidth=1.5, label='_nolegend_')
+            if fitted:		
+            	ax[1].plot(noise[k][dep[1]]*ax_coef[1], noise[k]['fitted'],\
+			   color=line[0].get_color(), linewidth=1.5, label='_nolegend_')
             
             line = ax[2].plot(noise[k]['rpar'], noise[k]['power'], '.',\
                               alpha=0.6, ms=3, label=label_now)
