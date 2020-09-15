@@ -22,10 +22,10 @@ def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  
     DC measurement in 3 probe geometry.
     If 1 terminal of sample is grounded (DC), r_wires must be 0
     """
-    preamp = varz.preamp if not preamp
-    r_set = varz.r_set if not r_set
-    r0 = varz.r0 if not r0
-    coef = varz.coef if not coef
+    preamp = varz.preamp if not preamp else preamp
+    r_set = varz.r_set if not r_set else r_set
+    r0 = varz.r0 if not r0 else r0
+    coef = varz.coef if not coef else coef
     
     r_set = np.atleast_1d(r_set)
     if len(r_set) == 1:
