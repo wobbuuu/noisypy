@@ -14,14 +14,19 @@ __all__ = ['calibrate', 'fit_calibration']
 
 
 def calibrate(vbs, res_inds, det_inds, skip=[], name='./data/cond', both=True,  det_ind=2,\
-              shift=1, r_set=varz.r_set, preamp=varz.preamp, r_wires=215/2, coef=varz.coef,\
-              r0=varz.r0, vmax=1e-3, sg_rpar=None, sg_det=None, sg_power=(9, 1), cs_smooth=None):
+              shift=1, r_set=None, preamp=None, r_wires=215/2, coef=None,\
+              r0=None, vmax=1e-3, sg_rpar=None, sg_det=None, sg_power=(9, 1), cs_smooth=None):
     """
     ADD AUTOEXCLUSION OF BAD CURVES
     Provides calibration data and calibration function
     DC measurement in 3 probe geometry.
     If 1 terminal of sample is grounded (DC), r_wires must be 0
     """
+    preamp = varz.preamp if not preamp
+    r_set = varz.r_set if not r_set
+    r0 = varz.r0 if not r0
+    coef = varz.coef if not coef
+    
     r_set = np.atleast_1d(r_set)
     if len(r_set) == 1:
         r_set = r_set*np.ones(len(res_inds))
