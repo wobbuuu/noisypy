@@ -139,7 +139,7 @@ def scalebar(ax, img, l, label=None, pos='right', delta=0, color='w', lw=1.2,\
     
 
 def panel_label(ax, label, pos=(0.5, 0.5), ha='left', va='bottom',\
-                fontsize=plt.rcParams['font.size']+1):
+                bold=True, fontsize=plt.rcParams['font.size']+1):
     """
     Print panel label for figure.
     
@@ -164,7 +164,8 @@ def panel_label(ax, label, pos=(0.5, 0.5), ha='left', va='bottom',\
         fontsize of label in pt units    
     """
     ax.axis('off')
-    ax.annotate(r'\textbf{'+label+'}', pos, fontsize=fontsize,\
+    lbl = r'\textbf{'+label+'}' if bold else label
+    ax.annotate(lbl, pos, fontsize=fontsize,\
                 transform=ax.transAxes, ha=ha, va=va)
     
     
